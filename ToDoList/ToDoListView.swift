@@ -22,6 +22,16 @@ struct ToDoListView: View {
                     }
                     .font(.title2)
                 }
+//                Shorthand Calls
+                .onDelete(perform: toDosVM.delete)
+                .onMove(perform: toDosVM.move)
+//                Traditional Calls Below
+//                .onDelete { indexSet in
+//                    toDosVM.delete(indexSet: indexSet)
+//                }
+//                .onMove { fromOffsets, toOffset in
+//                    toDosVM.toDos.move(fromOffsets: fromOffsets, toOffset: toOffset)
+//                }
             }
             .navigationTitle("To Do List")
             .navigationBarTitleDisplayMode(.automatic)
@@ -33,6 +43,9 @@ struct ToDoListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                     EditButton()
                 }
             }
             .sheet(isPresented: $sheetIsPresented) {

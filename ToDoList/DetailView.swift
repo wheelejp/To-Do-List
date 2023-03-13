@@ -50,10 +50,8 @@ struct DetailView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
                     //To Do
-                    if newToDo {
-                        toDosVM.toDos.append(toDo)
-                        dismiss()
-                    }
+                    toDosVM.saveToDo(toDo: toDo, newToDo: newToDo)
+                    dismiss()
                 }
             }
         }

@@ -14,6 +14,16 @@ class ToDosViewModel: ObservableObject {
         loadData()
     }
     
+    func toggleCompleted(toDo: ToDo){
+        guard toDo.id != nil else {return}
+        var newToDo = toDo
+        newToDo.isCompleted.toggle()
+        if let index = toDos.firstIndex(where: {$0.id == newToDo.id}) {
+            toDos[index] = newToDo
+        }
+        saveData()
+    }
+    
     func saveToDo(toDo: ToDo) {
         if toDo.id == nil {
             var newToDo = toDo
